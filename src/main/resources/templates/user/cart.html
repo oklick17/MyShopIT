@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+</head>
+<body style="min-height: 0; align-items: center; margin: 40px;">
+
+<h1 style="margin-top: -10px">Корзина товаров</h1>
+<div class="cards">
+<div class="card" th:each="product : ${cart_product}">
+    <div class="card__top">
+        <a  class="card__image">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+        </a>
+    </div>
+    <div class="card__bottom">
+        <!-- Цены на товар -->
+        <div class="card__prices">
+    <p class="card__price card__price--common" th:text="${product.getPrice()}"></p>
+        </div>
+        <!-- Ссылка-название товара -->
+        <a class="card__title" th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}">
+        </a>
+    <a  class="card__add" th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>
+    <hr>
+</div>
+</div>
+</div>
+<br>
+    <div>
+<h3 style="margin-left: 20px; text-align: unset; margin-top: 10px" th:text="'Итоговая цена: ' + ${price}"></h3>
+  <a style="margin-left: 20px; max-width: 200px; background-color: #caf2ff; display: block;
+    width: 90%;
+    font-weight: 400;
+    font-size: 17px;
+    color: #1d79c0;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #11a7ee;
+    border-radius: 4px;
+    cursor: pointer; /* Меняем курсор при наведении */
+    transition: 0.2s;
+    margin-top: auto; /* Прижимаем кнопку к низу карточки */"  href="/order/create">Оформить заказ</a>
+
+</div>
+</body>
+</html>

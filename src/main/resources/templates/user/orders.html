@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+</head>
+<body style="min-height: 0; align-items: center; margin: 40px;">
+
+    <h1> Заказы: </h1>
+    <!-- Карточка товара -->
+    <div class="cards">
+        <div class="card"  th:each="order : ${orders}">
+            <!-- Верхняя часть -->
+            <div class="card__top">
+                <!-- Изображение-ссылка товара -->
+                <a  class="card__image">
+                    <img
+                            th:src="'/img/' + ${order.getProduct().getImageList()[0].getFileName()}"
+                            alt="фото товара">
+                </a>
+            </div>
+            <!-- Нижняя часть -->
+            <div class="card__bottom">
+                <!-- Цены на товар -->
+                <div class="card__prices">
+
+                    <div class="card__price card__price--common" th:text="'Цена: ' + ${order.getPrice()}"></div>
+                </div>
+                <!-- Ссылка-название товара -->
+                <a class="card__title" th:text="'Наименование: ' + ${order.getProduct().getTitle()}">
+                </a>
+                <p th:text="'Количество: ' + ${order.getCount()}"></p>
+                <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+                <p th:text="'Cтатус: ' + ${order.getStatus()}"></p>
+                <h3 th:text="'Заказ №' + ${order.getNumber()}"></h3>
+
+                <!-- Кнопка добавить в корзину -->
+               <!-- <a class="card__add" th:href="@{/cart/add/{id}(id=${product.getId()})}">В корзину</a> -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

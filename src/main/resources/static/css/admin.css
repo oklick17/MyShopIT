@@ -1,0 +1,333 @@
+.topbtn{
+    display: grid;
+    /* Автоматически заполняем на всю ширину grid-контейнера */
+    grid-template-columns: repeat(auto-fill, 200px);
+    width: 100%;
+    max-width: 1150px; /* Ширина grid-контейнера */
+    justify-content: center;
+    justify-items: center; /* Размещаем карточку по центру */
+    column-gap: 30px; /* Отступ между колонками */
+    row-gap: 40px; /* Отступ между рядами */
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+}
+
+.cards {
+    display: grid;
+    /* Автоматически заполняем на всю ширину grid-контейнера */
+    grid-template-columns: repeat(auto-fill, 300px);
+    width: 100%;
+    max-width: 1320px; /* Ширина grid-контейнера */
+    justify-content: center;
+    justify-items: center; /* Размещаем карточку по центру */
+    column-gap: 30px; /* Отступ между колонками */
+    row-gap: 40px; /* Отступ между рядами */
+    margin: 0 auto;
+}
+.card {
+    width: 300px;
+    min-height: 450px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    border-radius: 4px;
+    transition: 0.2s;
+    position: relative;
+}
+
+/* При наведении на карточку - меняем цвет тени */
+.card:hover {
+    box-shadow: 4px 8px 16px rgba(255, 102, 51, 0.2);
+}
+
+.card__top {
+    flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
+    position: relative;
+    overflow: hidden; /* Скрываем, что выходит за пределы */
+}
+
+/* Контейнер для картинки */
+.card__image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+}
+
+.card__image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Встраиваем картинку в контейнер card__image */
+    transition: 0.2s;
+}
+
+/* При наведении - увеличиваем картинку */
+.card__image:hover > img {
+    transform: scale(1.1);
+}
+
+/* Размещаем скидку на товар относительно изображения */
+.card__label {
+    padding: 4px 8px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: #ff6633;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+}
+
+.card__bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; /* Занимаем всю оставшуюся высоту карточки */
+    padding: 10px;
+}
+
+.card__prices {
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.card__price::after {
+    content: "₽";
+    margin-left: 4px;
+    position: relative;
+}
+
+.card__price--discount {
+    font-weight: 700;
+    font-size: 19px;
+    color: #414141;
+    display: flex;
+    flex-wrap: wrap-reverse;
+}
+
+.card__price--discount::before {
+    content: "Со скидкой";
+    font-weight: 400;
+    font-size: 13px;
+    color: #bfbfbf;
+}
+
+.card__price--common {
+    font-weight: 400;
+    font-size: 17px;
+    color: #606060;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+}
+
+.card__price--common::before {
+    content: "Цена:";
+    font-weight: 400;
+    font-size: 18px;
+    color: #bfbfbf;
+}
+
+.card__title {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 150%;
+    color: #414141;
+}
+
+.card__title:hover {
+    color: #ff6633;
+}
+
+.card__add {
+    display: block;
+    width: 90%;
+    font-weight: 400;
+    font-size: 17px;
+    color: #1d79c0;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #11a7ee;
+    border-radius: 4px;
+    cursor: pointer; /* Меняем курсор при наведении */
+    transition: 0.2s;
+    margin-top: auto; /* Прижимаем кнопку к низу карточки */
+}
+
+.card__add:hover {
+    border: 1px solid #0a6996;
+    background-color: #0a6996;
+    color: #fff;
+}
+head, body{
+    margin: 20px;
+}
+caption{
+    font-size: 30px;
+    margin: 20px;
+}
+legend{
+    font-size: 30px;
+    margin: 20px;
+}
+fieldset{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn{
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 25px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: 1px solid #626161;
+    border-radius: 50px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #444;
+    background-color:#bde4e2;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    transition: box-shadow 0.2s;
+}
+.btn2{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 25px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: 1px solid #626161;
+    border-radius: 50px;
+    height: 46px;
+    line-height: 46px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #444;
+    background-color:#bde4e2;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    transition: box-shadow 0.2s;
+}
+.btn2:hover {
+    transition: all 0.2s;
+    box-shadow: 0 15px 10px rgb(65 132 144 / 20%), 0 3px 6px rgb(0 0 0 / 15%);
+}
+.btn:focus-visible {
+    border: 1px solid #4c51f9;
+    outline: none;
+}
+.btn:hover {
+    transition: all 0.2s;
+    box-shadow: 0 7px 14px rgb(65 132 144 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+}
+.btn:active {
+    background-color: #808080;
+}
+
+
+table.dis{
+    text-decoration: none;
+    border-collapse: collapse;
+    margin: 80px;
+    text-align: center;
+    width:88%;
+}
+table.dis th{
+    font-weight: normal;
+    font-size: 30px;
+    color: #ffffff;
+    background-color: #2F4F4F;
+}
+table.dis td{
+    font-size:16px;
+    color:#0b4f80;
+}
+table.dis td,table.dis th{
+
+    padding:23px 9px;
+    line-height:16px;
+    vertical-align: middle;
+    border: 2px solid #072438;
+}
+table.dis tr:hover{
+    background-color:	#E0E0E0;
+}
+table.dis tr:hover td{
+    color:#354251;
+    cursor:pointer;
+}
+input, select {
+    font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+input[type=text], input[type=password], select {
+    margin: 5px;
+    padding: 0 10px;
+    height: 34px;
+    color: #404040;
+    background: white;
+    border: 1px solid;
+    border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+    border-radius: 2px;
+    outline: 5px solid #eff4f7;
+    -moz-outline-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+input[type=text]:focus, input[type=password]:focus, select:focus {
+    border-color: #11a7ee;
+    outline-color: #dceefc;
+    outline-offset: 0;
+}
+
+input[type=submit], select{
+    padding: 0 18px;
+    height: 34px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #527881;
+    text-shadow: 0 1px #e3f1f1;
+    background: darkblue;
+    border: 1px solid;
+    border-color: #b4ccce #b3c0c8 #9eb9c2;
+    border-radius: 8px;
+    outline: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    background-image: -webkit-linear-gradient(top, #edf5f8, #cde5ef);
+    background-image: -moz-linear-gradient(top, #edf5f8, #cde5ef);
+    background-image: -o-linear-gradient(top, #edf5f8, #cde5ef);
+    background-image: linear-gradient(to bottom, #edf5f8, #cde5ef);
+    -webkit-box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 1px white, 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+input[type=submit]:active, select:active {
+    background: #cde5ef;
+    border-color: #9eb9c2 #b3c0c8 #b4ccce;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аутентификация</title>
+    <link th:href="@{/css/index.css}" type="text/css" rel="stylesheet">
+</head>
+<body>
+<section class="container">
+    <div class="login">
+        <h1>Вход</h1>
+        <form method="post" action="/process_login">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <p><input type="text" name="username" id="username" value="" placeholder="Введите логин"></p>
+            <p><input type="password" name="password" id="password" value="" placeholder="Пароль"></p>
+            <p class="remember_me">
+                <label>
+                    <input type="checkbox" name="remember_me" id="remember_me">
+                    Запомнить на этом компьютере
+                </label>
+            </p>
+            </br>
+            <div class="submit"><input class="submit" type="submit" name="commit" value="Войти"></div>
+        </form>
+        <br>
+        <div th:if="${param.error}" style="color: red" >
+            Неправильный логин или пароль
+        </div>
+        <br>
+        <br>
+        <a href="/registration" style="font-size: 16px">Зарегистрироваться</a>
+        <br>
+        <a href="/product" style="font-size: 16px">На главную</a>
+    </div>
+
+    <div class="login-help">
+        <p>Забыли пароль? <a href="authentication.html.html">Нажмите сюда, чтобы получить новый</a>.</p>
+    </div>
+</section>
+
+
+</body>
+
+
+
+</html>

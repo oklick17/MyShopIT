@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/product.css}" type="text/css" rel="stylesheet">
+    <title>Cписок товаров</title>
+</head>
+<body>
+<div class="hero">
+    <header>
+        <div class="top">
+            <a href="#"><img th:src="@{image/rm410-16.jpg}" class="logo" alt="здесь было фото" title="Лого"/></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#where">Lookbook</a></li>
+                    <li><a href="#">Акции</a></li>
+                    <li><a href="#">Доставка</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+                <a href="/authentication" class="login_btn">Вход</a>
+            </nav>
+        </div>
+    </header>
+
+
+</div>
+
+
+<h3>Cортировка, поиск, фильтрация</h3>
+<div class="page1">
+<form th:method="POST" th:action="@{/product/search}">
+    <fieldset>
+        <legend>Выберите параметры для сортировки, поиска, фильтрации:</legend>
+        <label for="search">Поиск по наименованию</label>
+        <input type="text" id="search" name="search" th:value="*{value_search}">
+        <br>
+        <p>Цена, P</p>
+        <label for="ot">От</label>
+        <input type="text" name="ot" id="ot" th:value="*{value_price_ot}">
+        <label for="do">До</label>
+        <input type="text" name="do" id="do" th:value="*{value_price_do}">
+        <br>
+        <br>
+        <div>
+            <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+            <label for="ascending_price">Отсортировать по возрастанию цены</label>
+            <input type="radio" id="descending_price" name="price"
+                   value="sorted_by_descending_price">
+            <label for="descending_price">Отсортировать по убыванию цены</label>
+            <p>Категория товаров: </p>
+            <input type="radio" id="furniture" name="contract" value="furniture">
+            <label for="furniture">Мебель</label>
+            <input type="radio" id="appliances" name="contract" value="appliances">
+            <label for="appliances">Бытовая техника</label>
+            <input type="radio" id="clothes" name="contract" value="clothes">
+            <label for="clothes">Одежда</label>
+            <br>
+            <br>
+            <input type="submit" value="Найти">
+        </div>
+    </fieldset>
+</form>
+</div>
+<hr>
+<h3>Результат поиска, cортировки, фильтрации</h3>
+<div class="cards">
+    <div class="card" th:each="product : ${search_product}">
+        <!-- Верхняя часть -->
+        <div class="card__top">
+            <!-- Изображение-ссылка товара -->
+            <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}" class="card__image">
+                <img
+                        th:src="'/img/' + ${product.imageList[0].getFileName()}"
+                        alt="фото товара">
+            </a>
+        </div>
+        <!-- Нижняя часть -->
+        <div class="card__bottom">
+            <!-- Цены на товар -->
+            <div class="card__prices">
+
+                <div class="card__price card__price--common" th:text="' '+${product.getPrice()}"></div>
+            </div>
+            <!-- Ссылка-название товара -->
+            <a th:href="@{/product/info/{id}(id=${product.getId()})}" class="card__title"
+               th:text="${product.getTitle()}">
+            </a>
+            <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
+            <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+            <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+
+            <!-- Кнопка добавить в корзину -->
+            <a class="card__add" th:href="@{/cart/add/{id}(id=${product.getId()})}">В корзину</a>
+        </div>
+    </div>
+</div>
+<hr>
+<h3>Доступные товары: </h3>
+<!-- Карточка товара -->
+<div class="cards">
+    <div class="card"  th:each="product : ${products}">
+        <!-- Верхняя часть -->
+        <div class="card__top">
+            <!-- Изображение-ссылка товара -->
+            <a th:href="@{/product/info/{id}(id=${product.getId()})}" class="card__image">
+                <img
+                        th:src="'/img/' + ${product.imageList[0].getFileName()}"
+                        alt="фото товара">
+            </a>
+        </div>
+        <!-- Нижняя часть -->
+        <div class="card__bottom">
+            <!-- Цены на товар -->
+            <div class="card__prices">
+
+                <div class="card__price card__price--common" th:text="' '+${product.getPrice()}"></div>
+            </div>
+            <!-- Ссылка-название товара -->
+            <a th:href="@{/product/info/{id}(id=${product.getId()})}" class="card__title" th:text="${product.getTitle()}">
+            </a>
+            <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
+            <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+            <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+
+            <!-- Кнопка добавить в корзину -->
+            <a class="card__add" th:href="@{/cart/add/{id}(id=${product.getId()})}">В корзину</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
